@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Employee, Dept
-from .forms import UserForm
+from .forms import UserForm,EmpForm
 
 
 # Create your views here.
@@ -27,12 +27,17 @@ def dept(request):
     return render(request,'MyApp1/Dept.html',context=appdata)
 
 
-def form_page(request):
-    form = UserForm()
-    if request.method == 'POST':
-        form = UserForm(request.POST)
+def emp_formpage(request):
+    form = EmpForm()
+    if request.method=='POST':
+        form = EmpForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data['user'])
-            print(form.cleaned_data['email'])
-            print(form.cleaned_data['password'])
-    return render(request,'MyApp1/UserForm.html',{'form':form})
+            form.save(commit=True)
+            return HttpResponse("<h1>Inserted Successfully</h1>")
+        else:
+            return HttpResponse("<h1>Invalid Details</h1>")
+    return render(request,'MyApp1/EmpForm.html',{'form':form})
+
+
+def form_page():
+    return None
