@@ -7,8 +7,7 @@ from .forms import UserForm,EmpForm
 # Create your views here.
 
 def home(request):
-    data = {"name":"First WebPage"}
-    return render(request,'Myapp1/Home.html',context=data)
+    return render(request,'Myapp1/Base.html')
 
 def help(request):
     return HttpResponse("<h1>This is the Help Page</h1>")

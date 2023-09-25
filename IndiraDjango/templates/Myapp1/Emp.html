@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+{% extends 'Myapp1/Base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Employee Data</title>
-    <link rel="stylesheet" href="{% static 'Myapp1/CSS/Emp.css' %}">
-</head>
-<body>
+{% block content %}
+
+
 <h1> Employee Info </h1>
 <table border="1">
     <thread>
@@ -27,7 +23,5 @@
 
 
 </table>
+{% endblock content %}
 
-
-</body>
-</html>
